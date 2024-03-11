@@ -1,0 +1,3 @@
+[submodule "Ynion/vendor/spdlog"]
+	path = Ynion/vendor/spdlog
+	url = git@github.com:gabime/spdlog.git
