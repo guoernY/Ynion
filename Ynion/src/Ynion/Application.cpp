@@ -1,3 +1,4 @@
+#include "ynpch.h"
 #include "Application.h"
 
 #include "Ynion/Events/ApplicationEvent.h"

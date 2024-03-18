@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Ynion {
 
 	class YNION_API KeyEvent : public Event
