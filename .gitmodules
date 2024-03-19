@@ -1,3 +1,6 @@
 [submodule "Ynion/vendor/spdlog"]
 	path = Ynion/vendor/spdlog
 	url = git@github.com:gabime/spdlog.git
+[submodule "Ynion/vendor/GLFW"]
+	path = Ynion/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

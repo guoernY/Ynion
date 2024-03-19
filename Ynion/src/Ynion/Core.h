@@ -10,4 +10,12 @@
 	#error Ynion only support Windows!
 #endif
 
+#ifdef YN_ENABLE_ASSERTS
+	#define YN_ASSERT(x, ...) { if(!(x)) { YN_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define YN_CORE_ASSERT(x, ...) { if(!(x)) { YN_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define YN_ASSERT(x, ...)
+	#define YN_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1<<x)

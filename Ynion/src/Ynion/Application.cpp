@@ -2,12 +2,14 @@
 #include "Application.h"
 
 #include "Ynion/Events/ApplicationEvent.h"
-#include "Ynion/Log.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Ynion {
 
 	Ynion::Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Ynion::Application::~Application()
@@ -16,17 +18,12 @@ namespace Ynion {
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
+		while (m_Running)
 		{
-			YN_TRACE(e);
+			glClearColor(1, 1, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			YN_TRACE(e);
-		}
-
-		while (true);
 	}
 
 }

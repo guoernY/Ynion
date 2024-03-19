@@ -9,6 +9,12 @@ workspace "Ynion"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Ynion/vendor/GLFW/include"
+
+include "Ynion/vendor/GLFW"
+
 project "Ynion"
 	location "Ynion"
 	kind "SharedLib"
@@ -27,7 +33,13 @@ project "Ynion"
 
 	includedirs{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -37,7 +49,8 @@ project "Ynion"
 
 		defines{
 			"YN_PLATFORM_WINDOWS",
-			"YN_BUILD_DLL"
+			"YN_BUILD_DLL",
+			"YN_ENABLE_ASSERTS"
 		}
 	
 		postbuildcommands{
@@ -46,14 +59,17 @@ project "Ynion"
 
 	filter "configurations:Debug"
 		defines "YN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "YN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "YN_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -89,12 +105,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "YN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "YN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "YN_DIST"
+		buildoptions "/MD"
 		optimize "On"
