@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Ynion/vendor/GLFW/include"
+IncludeDir["Glad"] = "Ynion/vendor/Glad/include"
 
 include "Ynion/vendor/GLFW"
+include "Ynion/vendor/Glad"
 
 project "Ynion"
 	location "Ynion"
@@ -34,11 +36,13 @@ project "Ynion"
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -50,7 +54,8 @@ project "Ynion"
 		defines{
 			"YN_PLATFORM_WINDOWS",
 			"YN_BUILD_DLL",
-			"YN_ENABLE_ASSERTS"
+			"YN_ENABLE_ASSERTS",
+			"GLFW_INCLUDE_NONE"
 		}
 	
 		postbuildcommands{
