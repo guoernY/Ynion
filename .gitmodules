@@ -4,3 +4,6 @@
 [submodule "Ynion/vendor/GLFW"]
 	path = Ynion/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Ynion/vendor/imgui"]
+	path = Ynion/vendor/imgui
+	url = https://github.com/TheCherno/imgui
