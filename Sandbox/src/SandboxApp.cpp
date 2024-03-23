@@ -10,11 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		YN_INFO("ExampleLayer::Update");
+		if (Ynion::Input::IsKeyPressed(YN_KEY_TAB))
+			YN_TRACE("Tab key is pressed (poll)!");
 	}
 	void OnEvent(Ynion::Event& event) override
 	{
-		YN_TRACE("{0}", event);
+		//YN_TRACE("{0}", event);
+		if (event.GetEventType() == Ynion::EventType::KeyPressed)
+		{
+			Ynion::KeyPressedEvent& e = (Ynion::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == YN_KEY_TAB)
+				YN_TRACE("Tab key is pressed (event)!");
+			YN_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
