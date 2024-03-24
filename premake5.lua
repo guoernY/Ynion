@@ -105,6 +105,7 @@ project "Sandbox"
 	includedirs{
 		"Ynion/vendor/spdlog/include",
 		"Ynion/src",
+		"Ynion/vendor",
 		"%{IncludeDir.glm}"
 	}
 

@@ -1,5 +1,7 @@
 #include <Ynion.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Ynion::Layer
 {
 public:
@@ -8,12 +10,20 @@ public:
 	{
 	}
 
-	void OnUpdate() override
+	virtual void OnUpdate() override
 	{
 		if (Ynion::Input::IsKeyPressed(YN_KEY_TAB))
 			YN_TRACE("Tab key is pressed (poll)!");
 	}
-	void OnEvent(Ynion::Event& event) override
+
+	virtual void OnImGuiRender() override
+	{
+		//ImGui::Begin("Test");
+		//ImGui::Text("Hello World");
+		//ImGui::End();
+	}
+
+	virtual void OnEvent(Ynion::Event& event) override
 	{
 		//YN_TRACE("{0}", event);
 		if (event.GetEventType() == Ynion::EventType::KeyPressed)
@@ -33,7 +43,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Ynion::ImGuiLayer());
 	}
 
 	~Sandbox()

@@ -2,11 +2,12 @@
 
 #include "Core.h"
 
+#include "Window.h"
 #include "Ynion/LayerStack.h"
-#include "Events/Event.h"
+#include "Ynion/Events/Event.h"
 #include "Ynion/Events/ApplicationEvent.h"
 
-#include "Window.h"
+#include "Ynion/ImGui/ImGuiLayer.h"
 
 namespace Ynion {
 
@@ -30,6 +31,7 @@ namespace Ynion {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
