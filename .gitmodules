@@ -7,3 +7,6 @@
 [submodule "Ynion/vendor/imgui"]
 	path = Ynion/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Ynion/vendor/glm"]
+	path = Ynion/vendor/glm
+	url = http://github.com/g-truc/glm

@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Ynion/vendor/GLFW/include"
 IncludeDir["Glad"] = "Ynion/vendor/Glad/include"
 IncludeDir["ImGui"] = "Ynion/vendor/imgui"
+IncludeDir["glm"] = "Ynion/vendor/glm"
 
 group "Dependencies"
 	include "Ynion/vendor/GLFW"
@@ -37,7 +38,9 @@ project "Ynion"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs{
@@ -45,7 +48,8 @@ project "Ynion"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links{
@@ -100,7 +104,8 @@ project "Sandbox"
 
 	includedirs{
 		"Ynion/vendor/spdlog/include",
-		"Ynion/src"
+		"Ynion/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links{
