@@ -9,6 +9,8 @@
 
 #include "Ynion/ImGui/ImGuiLayer.h"
 
+#include "Ynion/Renderer/Shader.h"
+
 namespace Ynion {
 
 	class YNION_API Application
@@ -36,6 +38,7 @@ namespace Ynion {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
