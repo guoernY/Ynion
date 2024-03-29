@@ -11,8 +11,8 @@ namespace Ynion {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::None:		YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 
 		YN_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -23,8 +23,8 @@ namespace Ynion {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(indices, size);
+			case RendererAPI::API::None:		YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(indices, size);
 		}
 
 		YN_CORE_ASSERT(false, "Unkown RendererAPI!");
