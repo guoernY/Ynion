@@ -3,7 +3,7 @@
 
 #include "Renderer.h"
 
-#include "Ynion/Platform/OpenGL/OpenGLBuffer.h"
+#include "Platform/OpenGL/OpenGLBuffer.h"
 
 namespace Ynion {
 

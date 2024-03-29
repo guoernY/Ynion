@@ -8,8 +8,4 @@ namespace Ynion {
 	{
 	}
 
-	Layer::~Layer()
-	{
-	}
-
 }

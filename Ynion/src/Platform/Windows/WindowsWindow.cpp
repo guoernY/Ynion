@@ -5,7 +5,7 @@
 #include "Ynion/Events/MouseEvent.h"
 #include "Ynion/Events/KeyEvent.h"
 
-#include "Ynion/Platform/OpenGL/OpenGLContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Ynion {
 

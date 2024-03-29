@@ -2,7 +2,7 @@
 #include "VertexArray.h"
 
 #include "Renderer.h"
-#include "Ynion/Platform/OpenGL/OpenGLVertexArray.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace Ynion {
 
