@@ -13,6 +13,8 @@
 #include "Ynion/Renderer/Buffer.h"
 #include "Ynion/Renderer/VertexArray.h"
 
+#include "Ynion/Renderer/OrthographicCamera.h"
+
 namespace Ynion {
 
 	class YNION_API Application
@@ -44,6 +46,8 @@ namespace Ynion {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
