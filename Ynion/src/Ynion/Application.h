@@ -9,12 +9,6 @@
 
 #include "Ynion/ImGui/ImGuiLayer.h"
 
-#include "Ynion/Renderer/Shader.h"
-#include "Ynion/Renderer/Buffer.h"
-#include "Ynion/Renderer/VertexArray.h"
-
-#include "Ynion/Renderer/OrthographicCamera.h"
-
 namespace Ynion {
 
 	class YNION_API Application
@@ -40,14 +34,6 @@ namespace Ynion {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
