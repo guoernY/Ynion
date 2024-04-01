@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Ynion/Core.h"
+#include "Ynion/Core/Timestep.h"
 #include "Ynion/Events/Event.h"
 
 namespace Ynion {
@@ -13,7 +14,7 @@ namespace Ynion {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

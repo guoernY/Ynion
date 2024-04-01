@@ -7,6 +7,8 @@
 #include "Ynion/Events/Event.h"
 #include "Ynion/Events/ApplicationEvent.h"
 
+#include "Ynion/Core/Timestep.h"
+
 #include "Ynion/ImGui/ImGuiLayer.h"
 
 namespace Ynion {
@@ -34,6 +36,7 @@ namespace Ynion {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

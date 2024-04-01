@@ -5,6 +5,8 @@
 #include "Ynion/Application.h"
 #include "Ynion/Log.h"
 
+#include "Ynion/Core/Timestep.h"
+
 #include "Ynion/Input.h"
 #include "Ynion/KeyCodes.h"
 #include "Ynion/MouseButtonCodes.h"
