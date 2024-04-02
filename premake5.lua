@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "Ynion/vendor/GLFW/include"
 IncludeDir["Glad"] = "Ynion/vendor/Glad/include"
 IncludeDir["ImGui"] = "Ynion/vendor/imgui"
 IncludeDir["glm"] = "Ynion/vendor/glm"
+IncludeDir["stb_image"] = "Ynion/vendor/stb_image"
 
 group "Dependencies"
 	include "Ynion/vendor/GLFW"
@@ -40,6 +41,8 @@ project "Ynion"
 	files{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -54,7 +57,8 @@ project "Ynion"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links{

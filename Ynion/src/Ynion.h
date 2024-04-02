@@ -19,6 +19,7 @@
 
 #include "Ynion/Renderer/Buffer.h"
 #include "Ynion/Renderer/Shader.h"
+#include "Ynion/Renderer/Texture.h"
 #include "Ynion/Renderer/VertexArray.h"
 
 #include "Ynion/Renderer/OrthographicCamera.h"
