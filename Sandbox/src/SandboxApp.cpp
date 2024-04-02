@@ -23,7 +23,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Ynion::VertexBuffer> vertexBuffer;
+		Ynion::Ref<Ynion::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Ynion::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Ynion::BufferLayout layout = {
 			{ Ynion::ShaderDataType::Float3, "a_Position" },
@@ -33,7 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[3] = { 0,1,2 };
-		std::shared_ptr<Ynion::IndexBuffer> indexBuffer;
+		Ynion::Ref<Ynion::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Ynion::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -48,7 +48,7 @@ public:
 				-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Ynion::VertexBuffer> squareVB;
+		Ynion::Ref<Ynion::VertexBuffer> squareVB;
 		squareVB.reset(Ynion::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Ynion::ShaderDataType::Float3, "a_Position" }
@@ -56,7 +56,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Ynion::IndexBuffer> squareIB;
+		Ynion::Ref<Ynion::IndexBuffer> squareIB;
 		squareIB.reset(Ynion::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -191,11 +191,11 @@ public:
 	{
 	}
 private:
-	std::shared_ptr<Ynion::Shader> m_Shader;
-	std::shared_ptr<Ynion::VertexArray> m_VertexArray;
+	Ynion::Ref<Ynion::Shader> m_Shader;
+	Ynion::Ref<Ynion::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Ynion::Shader> m_FlatColorShader;
-	std::shared_ptr<Ynion::VertexArray> m_SquareVA;
+	Ynion::Ref<Ynion::Shader> m_FlatColorShader;
+	Ynion::Ref<Ynion::VertexArray> m_SquareVA;
 
 	Ynion::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
