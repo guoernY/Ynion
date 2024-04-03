@@ -98,7 +98,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Ynion::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Ynion::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		// Shader of the square
 		// --------------------
@@ -134,15 +134,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Ynion::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Ynion::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Ynion::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Ynion::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Ynion::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Ynion::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Ynion::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	virtual void OnUpdate(Ynion::Timestep ts) override
@@ -184,11 +184,13 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Ynion::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Ynion::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_LogoTexture->Bind();
-		Ynion::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Ynion::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
 		// Ynion::Renderer::Submit(m_Shader, m_VertexArray);
@@ -207,10 +209,11 @@ public:
 	{
 	}
 private:
+	Ynion::ShaderLibrary m_ShaderLibrary;
 	Ynion::Ref<Ynion::Shader> m_Shader;
 	Ynion::Ref<Ynion::VertexArray> m_VertexArray;
 
-	Ynion::Ref<Ynion::Shader> m_FlatColorShader, m_TextureShader;
+	Ynion::Ref<Ynion::Shader> m_FlatColorShader;
 	Ynion::Ref<Ynion::VertexArray> m_SquareVA;
 
 	Ynion::Ref<Ynion::Texture2D> m_Texture, m_LogoTexture;
