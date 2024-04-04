@@ -11,7 +11,7 @@ class ExampleLayer : public Ynion::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.f / 720.0f, true)
 	{
 		// The Triangle
 		// ------------
@@ -147,27 +147,14 @@ public:
 
 	virtual void OnUpdate(Ynion::Timestep ts) override
 	{
-		if (Ynion::Input::IsKeyPressed(YN_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Ynion::Input::IsKeyPressed(YN_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		if (Ynion::Input::IsKeyPressed(YN_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Ynion::Input::IsKeyPressed(YN_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+		// Update
+		m_CameraController.OnUpdate(ts);
 
-		if (Ynion::Input::IsKeyPressed(YN_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if (Ynion::Input::IsKeyPressed(YN_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
+		// Render
 		Ynion::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Ynion::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Ynion::Renderer::BeginScene(m_Camera);
+		Ynion::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -205,8 +192,9 @@ public:
 		ImGui::End();
 	}
 
-	virtual void OnEvent(Ynion::Event& event) override
+	virtual void OnEvent(Ynion::Event& e) override
 	{
+		m_CameraController.OnEvent(e);
 	}
 private:
 	Ynion::ShaderLibrary m_ShaderLibrary;
@@ -218,11 +206,7 @@ private:
 
 	Ynion::Ref<Ynion::Texture2D> m_Texture, m_LogoTexture;
 
-	Ynion::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 90.0f;
+	Ynion::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
