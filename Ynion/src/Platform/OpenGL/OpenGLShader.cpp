@@ -201,7 +201,11 @@ namespace Ynion {
 			glDeleteProgram(program);
 			// Don't leak shaders either.
 			for (auto id : glShaderIDs)
+			{
+				glDetachShader(program, id);
 				glDeleteShader(id);
+			}
+				
 
 			YN_CORE_ERROR("{0}", infoLog.data());
 			YN_CORE_ASSERT(false, "Shader link failure!");
