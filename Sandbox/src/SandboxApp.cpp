@@ -1,4 +1,5 @@
 #include <Ynion.h>
+#include <Ynion/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -6,6 +7,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Ynion::Layer
 {
@@ -15,7 +18,7 @@ public:
 	{
 		// The Triangle
 		// ------------
-		m_VertexArray.reset(Ynion::VertexArray::Create());
+		m_VertexArray = Ynion::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -39,7 +42,7 @@ public:
 
 		// The Square
 		// ----------
-		m_SquareVA.reset(Ynion::VertexArray::Create());
+		m_SquareVA = Ynion::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -217,6 +220,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

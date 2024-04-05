@@ -25,7 +25,3 @@
 
 #include "Ynion/Renderer/OrthographicCamera.h"
 // -----------------------------
-
-// ----Entry Point--------------
-#include "Ynion/Core/EntryPoint.h"
-// -----------------------------
