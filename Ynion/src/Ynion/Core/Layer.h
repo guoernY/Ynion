@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Ynion/Core.h"
+#include "Ynion/Core/Core.h"
 #include "Ynion/Core/Timestep.h"
 #include "Ynion/Events/Event.h"
 

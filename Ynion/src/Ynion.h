@@ -2,14 +2,14 @@
 
 // For use by Ynion application
 
-#include "Ynion/Application.h"
-#include "Ynion/Log.h"
+#include "Ynion/Core/Application.h"
+#include "Ynion/Core/Log.h"
 
 #include "Ynion/Core/Timestep.h"
 
-#include "Ynion/Input.h"
-#include "Ynion/KeyCodes.h"
-#include "Ynion/MouseButtonCodes.h"
+#include "Ynion/Core/Input.h"
+#include "Ynion/Core/KeyCodes.h"
+#include "Ynion/Core/MouseButtonCodes.h"
 #include "Ynion/OrthographicCameraController.h"
 
 #include "Ynion/ImGui/ImGuiLayer.h"
@@ -27,5 +27,5 @@
 // -----------------------------
 
 // ----Entry Point--------------
-#include "Ynion/EntryPoint.h"
+#include "Ynion/Core/EntryPoint.h"
 // -----------------------------

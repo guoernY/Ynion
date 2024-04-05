@@ -1,6 +1,8 @@
 #include "ynpch.h"
 #include "Application.h"
 
+#include "Ynion/Core/Log.h"
+
 #include "Ynion/Renderer/Renderer.h"
 
 #include "Input.h"

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Ynion/Core.h"
+#include "Ynion/Core/Core.h"
 
 namespace Ynion {
 

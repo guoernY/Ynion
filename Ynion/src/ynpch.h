@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Ynion/Log.h"
+#include "Ynion/Core/Log.h"
 
 #ifdef YN_PLATFORM_WINDOWS
 	#include <Windows.h>

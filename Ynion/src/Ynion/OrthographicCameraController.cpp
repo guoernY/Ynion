@@ -1,8 +1,8 @@
 #include "ynpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Ynion/Input.h"
-#include "Ynion/KeyCodes.h"
+#include "Ynion/Core/Input.h"
+#include "Ynion/Core/KeyCodes.h"
 
 namespace Ynion {
 

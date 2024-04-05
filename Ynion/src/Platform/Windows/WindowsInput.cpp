@@ -1,7 +1,7 @@
 #include "ynpch.h"
 #include "WindowsInput.h"
 
-#include "Ynion/Application.h"
+#include "Ynion/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Ynion {

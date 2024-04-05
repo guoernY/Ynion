@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Ynion/Input.h"
+#include "Ynion/Core/Input.h"
 
 namespace Ynion {
 

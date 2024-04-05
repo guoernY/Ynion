@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Ynion/Window.h"
+#include "Ynion/Core/Window.h"
 #include "Ynion/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
