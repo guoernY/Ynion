@@ -30,7 +30,8 @@ void Sandbox2D::OnUpdate(Ynion::Timestep ts)
 
 	Ynion::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Ynion::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
+	Ynion::Renderer2D::DrawQuad({ -0.5f, -0.5f }, { 0.5f, 0.5f }, m_SquareColor);
+	Ynion::Renderer2D::DrawQuad({ 0.5f, 0.0f }, { 0.5f, 1.5f }, m_SquareColor);
 
 	Ynion::Renderer2D::EndScene();
 }
