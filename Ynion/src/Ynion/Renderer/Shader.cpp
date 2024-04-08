@@ -1,7 +1,7 @@
 #include "ynpch.h"
 #include "Shader.h"
 
-#include "Renderer.h"
+#include "Ynion/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Ynion {
@@ -11,7 +11,7 @@ namespace Ynion {
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:	YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(filepath);
+		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(filepath);
 		}
 
 		YN_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -23,7 +23,7 @@ namespace Ynion {
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:	YN_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		YN_CORE_ASSERT(false, "Unkown RendererAPI!");

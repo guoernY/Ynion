@@ -4,7 +4,7 @@
 
 namespace Ynion {
 
-	class WindowsInput : public Input	// 为啥这里不用导出为dll
+	class WindowsInput : public Input
 	{
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) override;

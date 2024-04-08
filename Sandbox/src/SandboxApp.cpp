@@ -1,9 +1,7 @@
 #include <Ynion.h>
 #include <Ynion/Core/EntryPoint.h>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -26,8 +24,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		Ynion::Ref<Ynion::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Ynion::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Ynion::Ref<Ynion::VertexBuffer> vertexBuffer = Ynion::VertexBuffer::Create(vertices, sizeof(vertices));
 		Ynion::BufferLayout layout = {
 			{ Ynion::ShaderDataType::Float3, "a_Position" },
 			{ Ynion::ShaderDataType::Float4, "a_Color" }
@@ -36,8 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[3] = { 0,1,2 };
-		Ynion::Ref<Ynion::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Ynion::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Ynion::Ref<Ynion::IndexBuffer> indexBuffer = Ynion::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		// The Square
@@ -51,8 +47,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Ynion::Ref<Ynion::VertexBuffer> squareVB;
-		squareVB.reset(Ynion::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ynion::Ref<Ynion::VertexBuffer> squareVB = Ynion::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Ynion::ShaderDataType::Float3, "a_Position" },
 			{ Ynion::ShaderDataType::Float2, "a_TexCoord" }
@@ -60,8 +55,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Ynion::Ref<Ynion::IndexBuffer> squareIB;
-		squareIB.reset(Ynion::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Ynion::Ref<Ynion::IndexBuffer> squareIB = Ynion::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		// Shader of the triangle
@@ -144,8 +138,8 @@ public:
 		m_Texture = Ynion::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Ynion::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 	}
 
 	virtual void OnUpdate(Ynion::Timestep ts) override
@@ -161,8 +155,8 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Ynion::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{

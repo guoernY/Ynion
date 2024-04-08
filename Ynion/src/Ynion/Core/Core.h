@@ -2,20 +2,6 @@
 
 #include <memory>
 
-#ifdef YN_PLATFORM_WINDOWS
-#if YN_DYNAMIC_LINK
-	#ifdef YN_BUILD_DLL
-		#define YNION_API __declspec(dllexport)
-	#else
-		#define YNION_API __declspec(dllimport)
-	#endif
-#else
-	#define YNION_API
-#endif
-#else
-	#error Ynion only support Windows!
-#endif
-
 #ifdef YN_DEBUG
 	#define YN_ENABLE_ASSERTS
 #endif

@@ -9,17 +9,17 @@ namespace Ynion {
 	{
 		switch (type)
 		{
-		case Ynion::ShaderDataType::Float:    return GL_FLOAT;
-		case Ynion::ShaderDataType::Float2:   return GL_FLOAT;
-		case Ynion::ShaderDataType::Float3:   return GL_FLOAT;
-		case Ynion::ShaderDataType::Float4:   return GL_FLOAT;
-		case Ynion::ShaderDataType::Mat3:     return GL_FLOAT;
-		case Ynion::ShaderDataType::Mat4:     return GL_FLOAT;
-		case Ynion::ShaderDataType::Int:      return GL_INT;
-		case Ynion::ShaderDataType::Int2:     return GL_INT;
-		case Ynion::ShaderDataType::Int3:     return GL_INT;
-		case Ynion::ShaderDataType::Int4:     return GL_INT;
-		case Ynion::ShaderDataType::Bool:     return GL_BOOL;
+		case ShaderDataType::Float:    return GL_FLOAT;
+		case ShaderDataType::Float2:   return GL_FLOAT;
+		case ShaderDataType::Float3:   return GL_FLOAT;
+		case ShaderDataType::Float4:   return GL_FLOAT;
+		case ShaderDataType::Mat3:     return GL_FLOAT;
+		case ShaderDataType::Mat4:     return GL_FLOAT;
+		case ShaderDataType::Int:      return GL_INT;
+		case ShaderDataType::Int2:     return GL_INT;
+		case ShaderDataType::Int3:     return GL_INT;
+		case ShaderDataType::Int4:     return GL_INT;
+		case ShaderDataType::Bool:     return GL_BOOL;
 		}
 
 		YN_CORE_ASSERT(false, "Unknown ShaderDataType!");

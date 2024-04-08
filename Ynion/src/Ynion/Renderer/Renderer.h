@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RenderCommand.h"
+#include "Ynion/Renderer/RenderCommand.h"
 
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "Ynion/Renderer/OrthographicCamera.h"
+#include "Ynion/Renderer/Shader.h"
 
 namespace Ynion {
 
@@ -11,6 +11,8 @@ namespace Ynion {
 	{
 	public:
 		static void Init();
+		static void Shutdown();
+
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(OrthographicCamera& camera);

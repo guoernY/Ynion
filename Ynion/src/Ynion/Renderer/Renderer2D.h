@@ -1,8 +1,8 @@
 #pragma once
 
-#include "OrthographicCamera.h"
+#include "Ynion/Renderer/OrthographicCameraController.h"
 
-#include "Texture.h"
+#include "Ynion/Renderer/Texture.h"
 
 namespace Ynion {
 

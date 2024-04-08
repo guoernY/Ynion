@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Ynion/Core/Core.h"
-#include "Layer.h"
+#include "Ynion/Core/Layer.h"
 
 #include <vector>
 
 namespace Ynion {
 
-	class YNION_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Ynion/Core/Core.h"
 
-#include "Window.h"
+#include "Ynion/Core/Window.h"
 #include "Ynion/Core/LayerStack.h"
 #include "Ynion/Events/Event.h"
 #include "Ynion/Events/ApplicationEvent.h"
@@ -13,11 +13,11 @@
 
 namespace Ynion {
 
-	class YNION_API Application
+	class Application
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 
@@ -47,5 +47,4 @@ namespace Ynion {
 	Application* CreateApplication();
 
 }
-
 
