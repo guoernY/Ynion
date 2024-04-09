@@ -44,7 +44,6 @@ namespace Ynion {
 			overlay->OnDetach();
 			m_Layers.erase(it);
 		}
-
 	}
 
 }
