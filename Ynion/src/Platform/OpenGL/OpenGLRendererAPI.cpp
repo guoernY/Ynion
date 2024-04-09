@@ -5,8 +5,36 @@
 
 namespace Ynion {
 
+	void OpenGLMessageCallback(
+		unsigned source,
+		unsigned type,
+		unsigned id,
+		unsigned severity,
+		int length,
+		const char* message,
+		const void* userParam)
+	{
+		switch (severity)
+		{
+		case GL_DEBUG_SEVERITY_HIGH:         YN_CORE_CRITICAL(message); return;
+		case GL_DEBUG_SEVERITY_MEDIUM:       YN_CORE_ERROR(message); return;
+		case GL_DEBUG_SEVERITY_LOW:          YN_CORE_WARN(message); return;
+		case GL_DEBUG_SEVERITY_NOTIFICATION: YN_CORE_TRACE(message); return;
+		}
+
+		YN_CORE_ASSERT(false, "Unknown severity level!");
+	}
+
 	void OpenGLRendererAPI::Init()
 	{
+	#ifdef YN_DEBUG
+		glEnable(GL_DEBUG_OUTPUT);
+		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+		glDebugMessageCallback(OpenGLMessageCallback, nullptr);
+
+		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, NULL, GL_FALSE);
+	#endif
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
