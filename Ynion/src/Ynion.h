@@ -12,7 +12,7 @@
 
 #include "Ynion/Core/Input.h"
 #include "Ynion/Core/KeyCodes.h"
-#include "Ynion/Core/MouseButtonCodes.h"
+#include "Ynion/Core/MouseCodes.h"
 #include "Ynion/Renderer/OrthographicCameraController.h"
 
 #include "Ynion/ImGui/ImGuiLayer.h"
