@@ -2,7 +2,7 @@
 
 #include "ynpch.h"
 
-#include "Ynion/Core/Core.h"
+#include "Ynion/Core/Base.h"
 #include "Ynion/Events/Event.h"
 
 namespace Ynion {

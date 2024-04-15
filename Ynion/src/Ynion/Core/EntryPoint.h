@@ -1,5 +1,5 @@
 #pragma once
-#include "Ynion/Core/Core.h"
+#include "Ynion/Core/Base.h"
 
 #ifdef YN_PLATFORM_WINDOWS
 

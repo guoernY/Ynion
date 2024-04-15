@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Ynion/Core/Core.h"
+#include "Ynion/Core/Base.h"
 #include "Ynion/Core/KeyCodes.h"
 #include "Ynion/Core/MouseCodes.h"
 

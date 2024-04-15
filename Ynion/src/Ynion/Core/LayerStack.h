@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Ynion/Core/Core.h"
 #include "Ynion/Core/Layer.h"
 
 #include <vector>

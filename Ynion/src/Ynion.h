@@ -2,7 +2,7 @@
 
 // For use by Ynion application
 
-#include "Ynion/Core/Core.h"
+#include "Ynion/Core/Base.h"
 
 #include "Ynion/Core/Application.h"
 #include "Ynion/Core/Log.h"
