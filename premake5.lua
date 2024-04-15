@@ -48,7 +48,8 @@ project "Ynion"
 	}
 
 	defines{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs{
@@ -73,8 +74,6 @@ project "Ynion"
 
 		defines{
 			"YN_PLATFORM_WINDOWS",
-			"YN_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"

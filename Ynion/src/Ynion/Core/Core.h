@@ -3,12 +3,19 @@
 #include <memory>
 
 #ifdef YN_DEBUG
+	#if defined(YN_PLATFORM_WINDOWS)
+		#define YN_DEBUGBREAK() __debugbreak()
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif
 	#define YN_ENABLE_ASSERTS
+#else
+	#define YN_DEBUGBREAK()
 #endif
 
 #ifdef YN_ENABLE_ASSERTS
-	#define YN_ASSERT(x, ...) { if(!(x)) { YN_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define YN_CORE_ASSERT(x, ...) { if(!(x)) { YN_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define YN_ASSERT(x, ...) { if(!(x)) { YN_ERROR("Assertion Failed: {0}", __VA_ARGS__); YN_DEBUGBREAK(); } }
+	#define YN_CORE_ASSERT(x, ...) { if(!(x)) { YN_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); YN_DEBUGBREAK(); } }
 #else
 	#define YN_ASSERT(x, ...)
 	#define YN_CORE_ASSERT(x, ...)
