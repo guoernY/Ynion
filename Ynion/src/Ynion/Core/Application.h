@@ -18,7 +18,7 @@ namespace Ynion {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Ynion App");
 		virtual ~Application();
 
 		void OnEvent(Event& e);

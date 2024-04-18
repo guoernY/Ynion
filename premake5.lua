@@ -1,6 +1,6 @@
 workspace "Ynion"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "Ynion-Editor"
 
 	configurations{
 		"Debug",
@@ -22,7 +22,6 @@ group "Dependencies"
 	include "Ynion/vendor/GLFW"
 	include "Ynion/vendor/Glad"
 	include "Ynion/vendor/imgui"
-
 group ""
 
 project "Ynion"
@@ -73,7 +72,7 @@ project "Ynion"
 		systemversion "latest"
 
 		defines{
-			"YN_PLATFORM_WINDOWS",
+			"YN_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
@@ -121,7 +120,55 @@ project "Sandbox"
 		systemversion "latest"
 
 		defines{
-			"YN_PLATFORM_WINDOWS",
+			"YN_PLATFORM_WINDOWS"
+		}
+
+	filter "configurations:Debug"
+		defines "YN_DEBUG"
+		runtime "Debug"
+		symbols "on"
+	
+	filter "configurations:Release"
+		defines "YN_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "YN_DIST"
+		runtime "Release"
+		optimize "on"
+
+project "Ynion-Editor"
+	location "Ynion-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs{
+		"Ynion/vendor/spdlog/include",
+		"Ynion/src",
+		"Ynion/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links{
+		"Ynion"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+		defines{
+			"YN_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
