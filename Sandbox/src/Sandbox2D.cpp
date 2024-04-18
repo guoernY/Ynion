@@ -53,6 +53,11 @@ Sandbox2D::Sandbox2D()
 void Sandbox2D::OnAttach()
 {
 	m_CheckerboardTexture = Ynion::Texture2D::Create("assets/textures/Checkerboard.png");
+
+	Ynion::FramebufferSpecification fbSpec;
+	fbSpec.Width = 1280;
+	fbSpec.Height = 720;
+	m_Framebuffer = Ynion::Framebuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -73,6 +78,7 @@ void Sandbox2D::OnUpdate(Ynion::Timestep ts)
 	Ynion::Renderer2D::ResetStats();
 	{
 		PROFILE_SCOPE("Renderer Prep");
+		m_Framebuffer->Bind();
 		Ynion::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Ynion::RenderCommand::Clear();
 	}
@@ -100,6 +106,7 @@ void Sandbox2D::OnUpdate(Ynion::Timestep ts)
 			}
 		}
 		Ynion::Renderer2D::EndScene();
+		m_Framebuffer->UnBind();
 	}
 }
 
@@ -188,8 +195,8 @@ void Sandbox2D::OnImGuiRender()
 
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
-		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
 		ImGui::End();
 
 		ImGui::End();
@@ -216,8 +223,8 @@ void Sandbox2D::OnImGuiRender()
 
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
-		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
 
 		ImGui::End();
 	}

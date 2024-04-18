@@ -24,6 +24,7 @@
 
 #include "Ynion/Renderer/Buffer.h"
 #include "Ynion/Renderer/Shader.h"
+#include "Ynion/Renderer/Framebuffer.h"
 #include "Ynion/Renderer/Texture.h"
 #include "Ynion/Renderer/VertexArray.h"
 

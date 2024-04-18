@@ -17,6 +17,8 @@ public:
 private:
 	Ynion::OrthographicCameraController m_CameraController;
 
+	Ynion::Ref<Ynion::Framebuffer> m_Framebuffer;
+
 	Ynion::Ref<Ynion::Texture2D> m_CheckerboardTexture;
 
 	struct ProfileResult
