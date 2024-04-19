@@ -23,6 +23,8 @@ namespace Ynion {
 
 		Ynion::Ref<Ynion::Texture2D> m_CheckerboardTexture;
 
+		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
+
 		struct ProfileResult
 		{
 			const char* Name;
