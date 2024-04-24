@@ -17,6 +17,7 @@ IncludeDir["Glad"] = "Ynion/vendor/Glad/include"
 IncludeDir["ImGui"] = "Ynion/vendor/imgui"
 IncludeDir["glm"] = "Ynion/vendor/glm"
 IncludeDir["stb_image"] = "Ynion/vendor/stb_image"
+IncludeDir["entt"] = "Ynion/vendor/entt/include"
 
 group "Dependencies"
 	include "Ynion/vendor/GLFW"
@@ -58,7 +59,8 @@ project "Ynion"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links{
@@ -109,7 +111,8 @@ project "Sandbox"
 		"Ynion/vendor/spdlog/include",
 		"Ynion/src",
 		"Ynion/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links{
@@ -157,7 +160,8 @@ project "Ynion-Editor"
 		"Ynion/vendor/spdlog/include",
 		"Ynion/src",
 		"Ynion/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links{

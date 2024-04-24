@@ -17,22 +17,17 @@ namespace Ynion {
 		virtual void OnImGuiRender() override;
 		virtual void OnEvent(Event& e) override;
 	private:
-		Ynion::OrthographicCameraController m_CameraController;
+		OrthographicCameraController m_CameraController;
 
-		Ynion::Ref<Ynion::Framebuffer> m_Framebuffer;
+		Ref<Framebuffer> m_Framebuffer;
 
-		Ynion::Ref<Ynion::Texture2D> m_CheckerboardTexture;
+		Ref<Scene> m_ActiveScene;
+		entt::entity m_SquareEntity;
+
+		Ref<Texture2D> m_CheckerboardTexture;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
-
-		struct ProfileResult
-		{
-			const char* Name;
-			float Time;
-		};
-
-		std::vector<ProfileResult> m_ProfileResults;
 
 		glm::vec4 m_SquareColor;
 	};
