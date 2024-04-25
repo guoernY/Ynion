@@ -18,6 +18,7 @@
 #include "Ynion/ImGui/ImGuiLayer.h"
 
 #include "Ynion/Scene/Scene.h"
+#include "Ynion/Scene/Entity.h"
 #include "Ynion/Scene/Components.h"
 
 // ----Renderer-----------------
