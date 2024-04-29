@@ -4,6 +4,8 @@
 
 #include "Ynion/Renderer/Texture.h"
 
+#include "Ynion/Renderer/Camera.h"
+
 namespace Ynion {
 
 	class Renderer2D
@@ -12,7 +14,8 @@ namespace Ynion {
 		static void Init();
 		static void Shutdown();
 
-		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const OrthographicCamera& camera);	// TODO: remove
 		static void EndScene();
 		static void Flush();
 
