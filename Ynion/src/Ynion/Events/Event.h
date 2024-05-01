@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ynpch.h"
+#include <functional>
+
 #include "Ynion/Core/Base.h"
 
 namespace Ynion {

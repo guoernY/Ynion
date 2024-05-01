@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ynpch.h"
+#include <sstream>
 
 #include "Ynion/Core/Base.h"
 #include "Ynion/Events/Event.h"
