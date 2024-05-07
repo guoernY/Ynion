@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Ynion/Core/Base.h"
-#include "Ynion/Core/Log.h"
 #include "Ynion/Scene/Scene.h"
 #include "Ynion/Scene/Entity.h"
 

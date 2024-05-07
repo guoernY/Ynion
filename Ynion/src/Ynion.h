@@ -7,6 +7,7 @@
 #include "Ynion/Core/Application.h"
 #include "Ynion/Core/Log.h"
 #include "Ynion/Core/Layer.h"
+#include "Ynion/Core/Assert.h"
 
 #include "Ynion/Core/Timestep.h"
 

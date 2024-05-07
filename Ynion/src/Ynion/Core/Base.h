@@ -18,13 +18,8 @@
 	#define YN_DEBUGBREAK()
 #endif
 
-#ifdef YN_ENABLE_ASSERTS
-	#define YN_ASSERT(x, ...) { if(!(x)) { YN_ERROR("Assertion Failed: {0}", __VA_ARGS__); YN_DEBUGBREAK(); } }
-	#define YN_CORE_ASSERT(x, ...) { if(!(x)) { YN_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); YN_DEBUGBREAK(); } }
-#else
-	#define YN_ASSERT(x, ...)
-	#define YN_CORE_ASSERT(x, ...)
-#endif
+#define YN_EXPAND_MACRO(x) x
+#define YN_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1<<x)
 
@@ -49,3 +44,6 @@ namespace Ynion {
 	}
 
 }
+
+#include "Ynion/Core/Log.h"
+#include "Ynion/Core/Assert.h"
