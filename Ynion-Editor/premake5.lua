@@ -19,7 +19,8 @@ project "Ynion-Editor"
 		"%{wks.location}/Ynion/src",
 		"%{wks.location}/Ynion/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links
