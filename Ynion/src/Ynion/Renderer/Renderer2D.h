@@ -5,6 +5,7 @@
 #include "Ynion/Renderer/Texture.h"
 
 #include "Ynion/Renderer/Camera.h"
+#include "Ynion/Renderer/EditorCamera.h"
 
 namespace Ynion {
 
@@ -15,6 +16,7 @@ namespace Ynion {
 		static void Shutdown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(const OrthographicCamera& camera);	// TODO: remove
 		static void EndScene();
 		static void Flush();

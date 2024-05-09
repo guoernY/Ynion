@@ -3,6 +3,8 @@
 #include "Ynion.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "Ynion/Renderer/EditorCamera.h"
+
 namespace Ynion {
 
 	class EditorLayer : public Layer
@@ -34,6 +36,8 @@ namespace Ynion {
 		Entity m_SecondCamera;
 
 		bool m_PrimaryCamera = true;
+
+		EditorCamera m_EditorCamera;
 
 		Ref<Texture2D> m_CheckerboardTexture;
 
