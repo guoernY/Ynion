@@ -10,3 +10,6 @@
 [submodule "Ynion/vendor/glm"]
 	path = Ynion/vendor/glm
 	url = http://github.com/g-truc/glm
+[submodule "Ynion/vendor/yaml-cpp"]
+	path = Ynion/vendor/yaml-cpp
+	url = https://github.com/TheCherno/yaml-cpp.git
