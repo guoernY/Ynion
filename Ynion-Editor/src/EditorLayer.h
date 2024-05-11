@@ -2,6 +2,7 @@
 
 #include "Ynion.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "Ynion/Renderer/EditorCamera.h"
 
@@ -25,6 +26,7 @@ namespace Ynion {
 
 		void NewScene();
 		void OpenScene();
+		void OpenScene(const std::filesystem::path& path);
 		void SaveSceneAs();
 	private:
 		OrthographicCameraController m_CameraController;
@@ -54,6 +56,7 @@ namespace Ynion {
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 
 }
