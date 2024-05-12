@@ -16,3 +16,6 @@
 [submodule "Ynion/vendor/ImGuizmo"]
 	path = Ynion/vendor/ImGuizmo
 	url = https://github.com/TheCherno/ImGuizmo
+[submodule "Ynion/vendor/Box2D"]
+	path = Ynion/vendor/Box2D
+	url = https://github.com/TheCherno/box2d.git
