@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Ynion/Core/Timestep.h"
+#include "Ynion/Core/UUID.h"
 #include "Ynion/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
@@ -18,6 +19,7 @@ namespace Ynion {
 		~Scene();
 
 		Entity CreateEntity(const std::string& name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();
