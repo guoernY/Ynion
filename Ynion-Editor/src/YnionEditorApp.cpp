@@ -13,12 +13,6 @@ namespace Ynion {
 		{
 			PushLayer(new EditorLayer());
 		}
-
-		~YnionEditor()
-		{
-
-		}
-
 	};
 
 	Application* CreateApplication()

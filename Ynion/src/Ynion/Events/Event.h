@@ -1,8 +1,8 @@
 #pragma once
 
-#include <functional>
-
 #include "Ynion/Core/Base.h"
+
+#include <functional>
 
 namespace Ynion {
 	

@@ -1,14 +1,18 @@
 #include "ynpch.h"
 #include "Ynion/Utils/PlatformUtils.h"
+#include "Ynion/Core/Application.h"
 
 #include <commdlg.h>
 #include <GLFW/glfw3.h>
 #define GLFW_EXPOSE_NATIVE_WIN32
 #include <GLFW/glfw3native.h>
 
-#include "Ynion/Core/Application.h"
-
 namespace Ynion {
+
+	float Time::GetTime()
+	{
+		return glfwGetTime();
+	}
 
 	std::string FileDialogs::OpenFile(const char* filter)
 	{

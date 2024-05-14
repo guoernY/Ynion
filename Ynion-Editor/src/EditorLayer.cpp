@@ -1,16 +1,14 @@
 #include "EditorLayer.h"
+#include "Ynion/Scene/SceneSerializer.h"
+#include "Ynion/Utils/PlatformUtils.h"
+#include "Ynion/Math/Math.h"
+
 #include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Ynion/Scene/SceneSerializer.h"
-
-#include "Ynion/Utils/PlatformUtils.h"
-
 #include "ImGuizmo.h"
-
-#include "Ynion/Math/Math.h"
 
 namespace Ynion {
 
@@ -89,6 +87,7 @@ namespace Ynion {
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 #endif
+		Renderer2D::SetLineWidth(4.0f);
 	}
 
 	void EditorLayer::OnDetach()
@@ -227,6 +226,9 @@ namespace Ynion {
 
 				if (ImGui::MenuItem("Open...", "Ctrl+O"))
 					OpenScene();
+
+				if (ImGui::MenuItem("Save", "Ctrl+S"))
+					SaveScene();
 
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 					SaveSceneAs();
@@ -395,7 +397,10 @@ namespace Ynion {
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
-		m_EditorCamera.OnEvent(e);
+		if (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Simulate)
+		{
+			m_EditorCamera.OnEvent(e);
+		}
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(YN_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
@@ -405,7 +410,7 @@ namespace Ynion {
 	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
 	{
 		// Shortcuts
-		if (e.GetRepeatCount() > 0)
+		if (e.IsRepeat())
 			return false;
 
 		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
@@ -538,6 +543,13 @@ namespace Ynion {
 					Renderer2D::DrawCircle(transform, glm::vec4(0, 1, 0, 1), 0.01f);
 				}
 			}
+		}
+
+		// Draw selected entity outline 
+		if (Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity())
+		{
+			const TransformComponent& transform = selectedEntity.GetComponent<TransformComponent>();
+			Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1.0f, 0.5f, 0.0f, 1.0f));
 		}
 
 		Renderer2D::EndScene();

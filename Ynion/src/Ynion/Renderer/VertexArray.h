@@ -1,7 +1,8 @@
 #pragma once
 
-#include <memory>
 #include "Ynion/Renderer/Buffer.h"
+
+#include <memory>
 
 namespace Ynion {
 

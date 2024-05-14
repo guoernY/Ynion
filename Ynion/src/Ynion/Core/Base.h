@@ -1,8 +1,8 @@
 #pragma once
 
-#include <memory>
-
 #include "Ynion/Core/PlatformDetection.h"
+
+#include <memory>
 
 #ifdef YN_DEBUG
 	#if defined(YN_PLATFORM_WINDOWS)

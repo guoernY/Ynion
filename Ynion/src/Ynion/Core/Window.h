@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sstream>
-
 #include "Ynion/Core/Base.h"
 #include "Ynion/Events/Event.h"
+
+#include <sstream>
 
 namespace Ynion {
 

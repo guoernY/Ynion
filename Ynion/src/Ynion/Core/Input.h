@@ -1,9 +1,9 @@
 #pragma once
 
-#include <glm/glm.hpp>
-
 #include "Ynion/Core/KeyCodes.h"
 #include "Ynion/Core/MouseCodes.h"
+
+#include <glm/glm.hpp>
 
 namespace Ynion {
 
