@@ -51,7 +51,7 @@ project "Ynion"
 		"Glad",
 		"ImGui",
 		"yaml-cpp",
-		"opengl32.lib"
+		"opengl32.lib",
 	}
 
 	filter "files:vendor/ImGuizmo/**.cpp"

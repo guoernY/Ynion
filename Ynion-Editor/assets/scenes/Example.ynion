@@ -1,23 +1,27 @@
 Scene: Untitled
 Entities:
-  - Entity: 1824846817913066400
+  - Entity: 11520805883637594823
     TagComponent:
-      Tag: Camera B
+      Tag: Green Square
     TransformComponent:
-      Translation: [-4, 0, 0]
+      Translation: [-0.106578529, -0.0529999137, -1.83066583]
+      Rotation: [0, 0, 0]
+      Scale: [6.25, 5.11779308, 1]
+    SpriteRendererComponent:
+      Color: [0, 1, 0.0386099815, 1]
+      TexturePath: assets\textures\Checkerboard.png
+      TilingFactor: 1
+  - Entity: 7309004295577322794
+    TagComponent:
+      Tag: Red Square
+    TransformComponent:
+      Translation: [0, 0.277043641, 0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
-    CameraComponent:
-      Camera:
-        ProjectionType: 1
-        PerspectiveFOV: 0.785398185
-        PerspectiveNear: 0.00999999978
-        PerspectiveFar: 1000
-        OrthographicSize: 10
-        OrthographicNear: -1
-        OrthographicFar: 1
-      Primary: false
-      FixedAspectRatio: false
+    SpriteRendererComponent:
+      Color: [1, 0, 0, 1]
+      TexturePath: assets\textures\ChernoLogo.png
+      TilingFactor: 1
   - Entity: 12564641357277646389
     TagComponent:
       Tag: Camera A
@@ -36,21 +40,21 @@ Entities:
         OrthographicFar: 1
       Primary: true
       FixedAspectRatio: false
-  - Entity: 7309004295577322794
+  - Entity: 1824846817913066400
     TagComponent:
-      Tag: Red Square
+      Tag: Camera B
     TransformComponent:
-      Translation: [0, 0, 0]
+      Translation: [-4, 0, 0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
-    SpriteRendererComponent:
-      Color: [1, 0, 0, 1]
-  - Entity: 11520805883637594823
-    TagComponent:
-      Tag: Green Square
-    TransformComponent:
-      Translation: [4.30000019, -2.70000005, 0]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendererComponent:
-      Color: [0, 1, 0.0386099815, 1]
+    CameraComponent:
+      Camera:
+        ProjectionType: 1
+        PerspectiveFOV: 0.785398185
+        PerspectiveNear: 0.00999999978
+        PerspectiveFar: 1000
+        OrthographicSize: 10
+        OrthographicNear: -1
+        OrthographicFar: 1
+      Primary: false
+      FixedAspectRatio: false
