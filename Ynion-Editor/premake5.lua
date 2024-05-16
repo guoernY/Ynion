@@ -10,7 +10,9 @@ project "Ynion-Editor"
 	files
 	{
 		"src/**.h",
-		"src/**.cpp"
+		"src/**.cpp",
+		"Sandbox/**.h",
+		"Sandbox/**.cpp"
 	}
 
 	includedirs
