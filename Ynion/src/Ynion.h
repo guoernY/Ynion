@@ -14,7 +14,8 @@
 #include "Ynion/Core/Input.h"
 #include "Ynion/Core/KeyCodes.h"
 #include "Ynion/Core/MouseCodes.h"
-#include "Ynion/Renderer/OrthographicCameraController.h"
+
+#include "Ynion/Math/Math.h"
 
 #include "Ynion/ImGui/ImGuiLayer.h"
 
@@ -22,6 +23,8 @@
 #include "Ynion/Scene/Entity.h"
 #include "Ynion/Scene/ScriptableEntity.h"
 #include "Ynion/Scene/Components.h"
+#include "Ynion/Scene/GameMode.h"
+#include "Ynion/Renderer/OrthographicCameraController.h"
 
 // ----Renderer-----------------
 #include "Ynion/Renderer/Renderer.h"

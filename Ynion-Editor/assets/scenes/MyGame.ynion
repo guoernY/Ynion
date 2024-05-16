@@ -1,0 +1,1270 @@
+Scene: Untitled
+Entities:
+  - Entity: 18067438904294125866
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [113.450806, -53.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 4662754998318486211
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [35.5, -59.0823059, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 18075666805247733634
+    TagComponent:
+      Tag: BackGround
+    TransformComponent:
+      Translation: [23.2403755, -19.9070683, -4.40563583]
+      Rotation: [0, 0, 0]
+      Scale: [240, 240, 1]
+    SpriteRendererComponent:
+      Color: [0.188235298, 0.278431386, 0.254901975, 0.517647088]
+      TexturePath: assets\textures\Checkerboard.png
+      TilingFactor: 4
+  - Entity: 11373559371120175202
+    TagComponent:
+      Tag: Player
+    TransformComponent:
+      Translation: [103.904991, -47.7441063, 0.0225147009]
+      Rotation: [0, 0, 0]
+      Scale: [3.04728436, 2.53511143, 0.848135769]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\player_DOWN.png
+      TilingFactor: 1
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    CircleCollider2DComponent:
+      Offset: [0, 0]
+      Radius: 0.5
+      Density: 0.300000012
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 7785530189200065033
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [89.4508057, -65.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 7336480521784992401
+    TagComponent:
+      Tag: Camera
+    TransformComponent:
+      Translation: [0, 0, 60]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    CameraComponent:
+      Camera:
+        ProjectionType: 0
+        PerspectiveFOV: 0.785398185
+        PerspectiveNear: 0.00999999978
+        PerspectiveFar: 1000
+        OrthographicSize: 10
+        OrthographicNear: -1
+        OrthographicFar: 1
+      Primary: true
+      FixedAspectRatio: false
+  - Entity: 5370048743025479077
+    TagComponent:
+      Tag: Zombie
+    TransformComponent:
+      Translation: [-12.4655733, -26.1514988, 0.00305175781]
+      Rotation: [0, 0, 0]
+      Scale: [6.73837566, 6.75, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\zombie_DOWN.png
+      TilingFactor: 1
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    CircleCollider2DComponent:
+      Offset: [0, 0]
+      Radius: 0.5
+      Density: 0.00999999978
+      Friction: 0.300000012
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8555353374434921669
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-0.549190521, -11.0823011, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 3466741570603691457
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [11.4508095, -11.0823011, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 10488037455919725884
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-12.5491905, -11.0823011, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 14247409164267120577
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-24.5491905, -11.0823011, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 13246297304363666571
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-24.5491905, 0.91769886, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 1658824530283270776
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-24.5491905, 12.9176989, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 15170464538358366532
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-24.5491905, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 6180670527069577150
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-12.5491905, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 15073160418041278468
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-0.549190521, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 11995501721262993960
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [11.4508095, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 11746018368822710011
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [23.5, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 2317637396246193255
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [35.5, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 12601028794193073111
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [47.5, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 13688362818501025146
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [23.4508095, -11.0823011, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 13128379018985907323
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [23.4508095, -23.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 16557021232412182284
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, 24.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 10293341657978840200
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, 12.9176979, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 18411839458085659340
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, 0.917697906, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8521394788784700989
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, -11.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 1899747511313358585
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, -23.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8121782868880576546
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, -35.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8518713101881180054
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, -47.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 6455973683038778793
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.5, -59.0823021, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 13213177800287492007
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [23.5, -59.0823059, 1.86264515e-09]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8363920471200550652
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [47.5013809, -59.0823059, -1.90734863e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 11189463388055675787
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [11.4508095, -59.0823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 7294632181682529115
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-0.0491905212, -47.0823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 4646423904142129654
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-12.0491905, -41.0823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 11712033098409510988
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-36.5491905, -22.5823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 18135151624952486952
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-36.5491905, -34.5823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 18089322118236138413
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-36.5491905, -46.5823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 9562108931776878166
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-36.5491905, -58.5823021, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 9402301495975663065
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-36.5491905, -70.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 2326594498397090533
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-24.5491905, -70.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 6840216773454109677
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-12.5491905, -70.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 12225123362943147985
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-12.5491905, -82.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 15352754248761786009
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [-0.549190521, -82.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 16483382844219934908
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [11.4508095, -82.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 10633349019062550104
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [23.4508095, -82.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 17184691944265370612
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [35.4508095, -82.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 10983655420194866613
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [47.4508095, -77.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8954728245746910684
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [59.4508095, -77.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 244004046289657023
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [71.4508057, -77.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 78946627565025097
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [83.4508057, -71.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 8100089108943920708
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [65.4508057, -53.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 18351674807847772513
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [77.4508057, -47.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 5330018295418724353
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [107.450806, -35.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 2302227782850980383
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [95.4508057, -41.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 1697624933031555468
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [83.4508057, -41.5823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 17136334253480988448
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [95.4508057, -59.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 15725774116467448647
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [110.450806, -44.0823059, -1.90362334e-06]
+      Rotation: [0, 0, -1.57079637]
+      Scale: [5.99995899, 5.99995899, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\exit.png
+      TilingFactor: 1
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 12621868118495182360
+    TagComponent:
+      Tag: wall
+    TransformComponent:
+      Translation: [107.450806, -59.0823059, -1.90362334e-06]
+      Rotation: [0, 0, 0]
+      Scale: [12, 12, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\wall.png
+      TilingFactor: 2
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 5647784047031548645
+    TagComponent:
+      Tag: ball
+    TransformComponent:
+      Translation: [31.9980984, -18.7168064, -1.15483999e-07]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    CircleRendererComponent:
+      Color: [0.976833999, 0.543104589, 0, 1]
+      Thickness: 1
+      Fade: 0.00499999989
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    CircleCollider2DComponent:
+      Offset: [0, 0]
+      Radius: 0.5
+      Density: 0.0500000007
+      Friction: 0.5
+      Restitution: 1
+      RestitutionThreshold: 15
+  - Entity: 2666706861420943467
+    TagComponent:
+      Tag: ball
+    TransformComponent:
+      Translation: [42.1081467, 13.5987606, -1.11758709e-07]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    CircleRendererComponent:
+      Color: [0.976833999, 0.543104589, 0, 1]
+      Thickness: 1
+      Fade: 0.00499999989
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    CircleCollider2DComponent:
+      Offset: [0, 0]
+      Radius: 0.5
+      Density: 0.0500000007
+      Friction: 0.5
+      Restitution: 1
+      RestitutionThreshold: 15

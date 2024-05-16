@@ -17,6 +17,8 @@
 #include "box2d/b2_polygon_shape.h"
 #include "box2d/b2_circle_shape.h"
 
+extern Ynion::GameMode* Ynion::CreateGameMode(b2World* world);
+
 namespace Ynion {
 
 	static b2BodyType Rigidbody2DTypeToBox2DBody(Rigidbody2DComponent::BodyType bodyType)
@@ -39,6 +41,7 @@ namespace Ynion {
 	Scene::~Scene()
 	{
 		delete m_PhysicsWorld;
+		delete m_GameMode;
 	}
 
 	template<typename... Component>
@@ -129,11 +132,16 @@ namespace Ynion {
 	void Scene::OnRuntimeStart()
 	{
 		OnPhysics2DStart();
+		m_GameMode = CreateGameMode(m_PhysicsWorld);
+		m_GameMode->BeginGame();
 	}
 
 	void Scene::OnRuntimeStop()
 	{
 		OnPhysics2DStop();
+		m_GameMode->EndGame();
+		delete m_GameMode;
+		m_GameMode = nullptr;
 	}
 
 	void Scene::OnSimulationStart()
@@ -146,7 +154,7 @@ namespace Ynion {
 		OnPhysics2DStop();
 	}
 
-	void Scene::OnUpdateRuntime(Timestep ts)
+	GameMode::GameState Scene::OnUpdateRuntime(Timestep ts)
 	{
 		// Update scripts
 		{
@@ -234,6 +242,8 @@ namespace Ynion {
 			Renderer2D::EndScene();
 		}
 
+		m_GameMode->UpdateGame();
+		return m_GameMode->getGameState();
 	}
 
 	void Scene::OnUpdateSimulation(Timestep ts, EditorCamera& camera)
@@ -259,7 +269,6 @@ namespace Ynion {
 				transform.Rotation.z = body->GetAngle();
 			}
 		}
-
 		// Render
 		RenderScene(camera);
 	}
@@ -318,6 +327,7 @@ namespace Ynion {
 			bodyDef.type = Rigidbody2DTypeToBox2DBody(rb2d.Type);
 			bodyDef.position.Set(transform.Translation.x, transform.Translation.y);
 			bodyDef.angle = transform.Rotation.z;
+			bodyDef.userData.pointer = entity.GetComponent<IDComponent>().ID;
 
 			b2Body* body = m_PhysicsWorld->CreateBody(&bodyDef);
 			body->SetFixedRotation(rb2d.FixedRotation);

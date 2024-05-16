@@ -84,6 +84,9 @@ namespace Ynion {
 
 		// Editor resources
 		Ref<Texture2D> m_IconPlay, m_IconSimulate, m_IconStop;
+
+		// GameState
+		GameMode::GameState m_GameState = GameMode::GameState::Run;
 	};
 
 }

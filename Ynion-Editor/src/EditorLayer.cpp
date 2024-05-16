@@ -37,56 +37,6 @@ namespace Ynion {
 
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
 
-#if 0
-		// Entity
-		auto greenSquare = m_ActiveScene->CreateEntity("Green Square");
-		greenSquare.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-
-		auto redSquare = m_ActiveScene->CreateEntity("Red Square");
-		redSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f });
-
-		m_SquareEntity = greenSquare;
-
-		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
-		m_CameraEntity.AddComponent<CameraComponent>();
-
-		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
-		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
-		cc.Primary = false;
-
-		class CameraController : public ScriptableEntity
-		{
-		public:
-			virtual void OnCreate() override
-			{
-				auto& translation = GetComponent<TransformComponent>().Translation;
-				translation.x = rand() % 10 - 5.0f;
-			}
-
-			virtual void OnDestroy() override
-			{
-			}
-
-			virtual void OnUpdate(Timestep ts) override
-			{
-				auto& translation = GetComponent<TransformComponent>().Translation;
-
-				float speed = 5.0f;
-
-				if (Input::IsKeyPressed(Key::A))
-					translation.x -= speed * ts;
-				if (Input::IsKeyPressed(Key::D))
-					translation.x += speed * ts;
-				if (Input::IsKeyPressed(Key::W))
-					translation.y += speed * ts;
-				if (Input::IsKeyPressed(Key::S))
-					translation.y -= speed * ts;
-			}
-		};
-
-		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-#endif
 		Renderer2D::SetLineWidth(4.0f);
 	}
 
@@ -137,7 +87,18 @@ namespace Ynion {
 			}
 			case SceneState::Play:
 			{
-				m_ActiveScene->OnUpdateRuntime(ts);
+				m_GameState = m_ActiveScene->OnUpdateRuntime(ts);
+				switch (m_GameState)
+				{
+				case GameMode::GameState::Run:
+					break;
+				case GameMode::GameState::Win:
+					break;
+				case GameMode::GameState::Loss:
+					OnSceneStop();
+					OnScenePlay();
+					break;
+				}
 				break;
 			}
 		}
@@ -292,50 +253,53 @@ namespace Ynion {
 		}
 
 		// Gizmos
-		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
-		if (selectedEntity && m_GizmoType != -1)
+		if (m_SceneState == SceneState::Edit)
 		{
-			ImGuizmo::SetOrthographic(false);
-			ImGuizmo::SetDrawlist();
-
-			ImGuizmo::SetRect(m_ViewportBounds[0].x, m_ViewportBounds[0].y, m_ViewportBounds[1].x - m_ViewportBounds[0].x, m_ViewportBounds[1].y - m_ViewportBounds[0].y);
-
-			// Runtime camera from entity
-			//auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
-			//const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
-			//const glm::mat4& cameraProjection = camera.GetProjection();
-			//glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
-
-			// Editor camera
-			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
-			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
-
-			// Entity transform
-			auto& tc = selectedEntity.GetComponent<TransformComponent>();
-			glm::mat4 transform = tc.GetTransform();
-
-			// Snapping
-			bool snap = Input::IsKeyPressed(Key::LeftControl);
-			float snapValue = 0.5f; // Snap to 0.5m for translation/scale
-			// Snap to 45 degrees for rotation
-			if (m_GizmoType == ImGuizmo::OPERATION::ROTATE)
-				snapValue = 45.0f;
-
-			float snapValues[3] = { snapValue, snapValue, snapValue };
-
-			ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
-				(ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
-				nullptr, snap ? snapValues : nullptr);
-
-			if (ImGuizmo::IsUsing())
+			Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
+			if (selectedEntity && m_GizmoType != -1)
 			{
-				glm::vec3 translation, rotation, scale;
-				Math::DecomposeTransform(transform, translation, rotation, scale);
+				ImGuizmo::SetOrthographic(false);
+				ImGuizmo::SetDrawlist();
 
-				glm::vec3 deltaRotation = rotation - tc.Rotation;
-				tc.Translation = translation;
-				tc.Rotation += deltaRotation;
-				tc.Scale = scale;
+				ImGuizmo::SetRect(m_ViewportBounds[0].x, m_ViewportBounds[0].y, m_ViewportBounds[1].x - m_ViewportBounds[0].x, m_ViewportBounds[1].y - m_ViewportBounds[0].y);
+
+				// Runtime camera from entity
+				//auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+				//const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
+				//const glm::mat4& cameraProjection = camera.GetProjection();
+				//glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+
+				// Editor camera
+				const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
+				glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
+
+				// Entity transform
+				auto& tc = selectedEntity.GetComponent<TransformComponent>();
+				glm::mat4 transform = tc.GetTransform();
+
+				// Snapping
+				bool snap = Input::IsKeyPressed(Key::LeftControl);
+				float snapValue = 0.5f; // Snap to 0.5m for translation/scale
+				// Snap to 45 degrees for rotation
+				if (m_GizmoType == ImGuizmo::OPERATION::ROTATE)
+					snapValue = 45.0f;
+
+				float snapValues[3] = { snapValue, snapValue, snapValue };
+
+				ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
+					(ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
+					nullptr, snap ? snapValues : nullptr);
+
+				if (ImGuizmo::IsUsing())
+				{
+					glm::vec3 translation, rotation, scale;
+					Math::DecomposeTransform(transform, translation, rotation, scale);
+
+					glm::vec3 deltaRotation = rotation - tc.Rotation;
+					tc.Translation = translation;
+					tc.Rotation += deltaRotation;
+					tc.Scale = scale;
+				}
 			}
 		}
 		
@@ -546,10 +510,13 @@ namespace Ynion {
 		}
 
 		// Draw selected entity outline 
-		if (Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity())
+		if (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Simulate)
 		{
-			const TransformComponent& transform = selectedEntity.GetComponent<TransformComponent>();
-			Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1.0f, 0.5f, 0.0f, 1.0f));
+			if (Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity())
+			{
+				const TransformComponent& transform = selectedEntity.GetComponent<TransformComponent>();
+				Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1.0f, 0.5f, 0.0f, 1.0f));
+			}
 		}
 
 		Renderer2D::EndScene();
@@ -624,6 +591,8 @@ namespace Ynion {
 		if (m_SceneState == SceneState::Simulate)
 			OnSceneStop();
 
+		m_HoveredEntity = Entity();
+
 		m_SceneState = SceneState::Play;
 
 		m_ActiveScene = Scene::Copy(m_EditorScene);
@@ -653,6 +622,8 @@ namespace Ynion {
 			m_ActiveScene->OnRuntimeStop();
 		else if (m_SceneState == SceneState::Simulate)
 			m_ActiveScene->OnSimulationStop();
+
+		m_HoveredEntity = Entity();
 
 		m_SceneState = SceneState::Edit;
 

@@ -8,6 +8,9 @@
 
 #include <cstring>
 
+#include "PlayerController.h"
+#include "CameraController.h"
+
 /* The Microsoft C++ compiler is non-compliant with the C++ standard and needs
  * the following definition to disable a security warning on std::strncpy().
  */
@@ -247,6 +250,18 @@ namespace Ynion {
 			DisplayAddComponentEntry<BoxCollider2DComponent>("Box Collider 2D");
 			DisplayAddComponentEntry<CircleCollider2DComponent>("Circle Collider 2D");
 
+			if (ImGui::MenuItem("PlayerController"))
+			{
+				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<PlayerController>();
+				ImGui::CloseCurrentPopup();
+			}
+
+			if (ImGui::MenuItem("CameraController"))
+			{
+				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+				ImGui::CloseCurrentPopup();
+			}
+
 			ImGui::EndPopup();
 		}
 
@@ -393,6 +408,10 @@ namespace Ynion {
 			ImGui::DragFloat("Friction", &component.Friction, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Restitution", &component.Restitution, 0.01f, 0.0f, 1.0f);
 			ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold, 0.01f, 0.0f);
+		});
+
+		DrawComponent<NativeScriptComponent>("Script", entity, [](auto& component)
+		{
 		});
 
 	}

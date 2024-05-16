@@ -2,6 +2,7 @@
 
 #include "Ynion/Core/Timestep.h"
 #include "Ynion/Core/UUID.h"
+#include "Ynion/Scene/GameMode.h"
 #include "Ynion/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
@@ -30,7 +31,7 @@ namespace Ynion {
 		void OnSimulationStart();
 		void OnSimulationStop();
 
-		void OnUpdateRuntime(Timestep ts);
+		GameMode::GameState OnUpdateRuntime(Timestep ts);
 		void OnUpdateSimulation(Timestep ts, EditorCamera& camera);
 		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 		void OnViewportResize(uint32_t width, uint32_t height);
@@ -57,6 +58,8 @@ namespace Ynion {
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 
 		b2World* m_PhysicsWorld = nullptr;
+
+		GameMode* m_GameMode = nullptr;
 
 		friend class Entity;
 		friend class SceneSerializer;

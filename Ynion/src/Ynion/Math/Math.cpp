@@ -34,7 +34,7 @@ namespace Ynion::Math {
 		translation = vec3(LocalMatrix[3]);
 		LocalMatrix[3] = vec4(0, 0, 0, LocalMatrix[3].w);
 
-		vec3 Row[3], Pdum3;
+		vec3 Row[3];
 
 		// Now get scale and shear.
 		for (length_t i = 0; i < 3; ++i)
@@ -48,21 +48,6 @@ namespace Ynion::Math {
 		Row[1] = detail::scale(Row[1], static_cast<T>(1));
 		scale.z = length(Row[2]);
 		Row[2] = detail::scale(Row[2], static_cast<T>(1));
-
-		// At this point, the matrix (in rows[]) is orthonormal.
-		// Check for a coordinate system flip.  If the determinant
-		// is -1, then negate the matrix and the scaling factors.
-#if 0
-		Pdum3 = cross(Row[1], Row[2]); // v3Cross(row[1], row[2], Pdum3);
-		if (dot(Row[0], Pdum3) < 0)
-		{
-			for (length_t i = 0; i < 3; i++)
-			{
-				scale[i] *= static_cast<T>(-1);
-				Row[i] *= static_cast<T>(-1);
-			}
-		}
-#endif
 
 		rotation.y = asin(-Row[0][2]);
 		if (cos(rotation.y) != 0) {
