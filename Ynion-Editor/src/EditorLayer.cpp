@@ -87,12 +87,14 @@ namespace Ynion {
 			}
 			case SceneState::Play:
 			{
+				// TODO: move m_GameState away from EditorLayer
 				m_GameState = m_ActiveScene->OnUpdateRuntime(ts);
 				switch (m_GameState)
 				{
 				case GameMode::GameState::Run:
 					break;
 				case GameMode::GameState::Win:
+					YN_CORE_INFO("You Win!");
 					break;
 				case GameMode::GameState::Loss:
 					OnSceneStop();

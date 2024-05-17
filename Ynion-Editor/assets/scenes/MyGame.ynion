@@ -57,7 +57,7 @@ Entities:
     TagComponent:
       Tag: Player
     TransformComponent:
-      Translation: [103.904991, -47.7441063, 0.0225147009]
+      Translation: [104.128441, -45.6618347, 0.0225147009]
       Rotation: [0, 0, 0]
       Scale: [3.04728436, 2.53511143, 0.848135769]
     SpriteRendererComponent:
@@ -1188,9 +1188,9 @@ Entities:
     TagComponent:
       Tag: wall
     TransformComponent:
-      Translation: [110.450806, -44.0823059, -1.90362334e-06]
+      Translation: [110.450806, -44.1738625, -1.90362346e-06]
       Rotation: [0, 0, -1.57079637]
-      Scale: [5.99995899, 5.99995899, 1]
+      Scale: [5.99995422, 5.99995422, 1]
     SpriteRendererComponent:
       Color: [1, 1, 1, 1]
       TexturePath: assets\textures\exit.png

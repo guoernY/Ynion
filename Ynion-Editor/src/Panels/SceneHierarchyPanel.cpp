@@ -8,8 +8,10 @@
 
 #include <cstring>
 
+// Temp
 #include "PlayerController.h"
 #include "CameraController.h"
+#include "Goal.h"
 
 /* The Microsoft C++ compiler is non-compliant with the C++ standard and needs
  * the following definition to disable a security warning on std::strncpy().
@@ -259,6 +261,12 @@ namespace Ynion {
 			if (ImGui::MenuItem("CameraController"))
 			{
 				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+				ImGui::CloseCurrentPopup();
+			}
+
+			if (ImGui::MenuItem("Goal"))
+			{
+				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<Goal>();
 				ImGui::CloseCurrentPopup();
 			}
 

@@ -21,7 +21,8 @@ void MyGameMode::UpdateGame()
 	if (!isSetID)
 	{
 		m_PlayerID = PlayerController::getPlayerID();
-		m_ContactListener = new MyContactListener(m_PlayerID, this);
+		m_GoalID = Goal::getID();
+		m_ContactListener = new MyContactListener(m_PlayerID, m_GoalID, this);
 		m_PhysicsWorld->SetContactListener(m_ContactListener);
 
 		isSetID = true;
