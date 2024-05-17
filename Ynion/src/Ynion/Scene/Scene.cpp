@@ -156,42 +156,45 @@ namespace Ynion {
 
 	GameMode::GameState Scene::OnUpdateRuntime(Timestep ts)
 	{
-		// Update scripts
+		if (!m_IsPaused || m_StepFrames-- > 0)
 		{
-			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+			// Update scripts
 			{
-				// TODO: Move to Scene::OnScenePlay
-				if (!nsc.Instance)
+				m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+					{
+						// TODO: Move to Scene::OnScenePlay
+						if (!nsc.Instance)
+						{
+							nsc.Instance = nsc.InstantiateScript();
+							nsc.Instance->m_Entity = Entity{ entity, this };
+
+							nsc.Instance->OnCreate();
+						}
+
+						nsc.Instance->OnUpdate(ts);
+					});
+			}
+
+			// Physics
+			{
+				const int32_t velocityIterations = 6;
+				const int32_t positionIterations = 2;
+				m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
+
+				// Retrieve transform from Box2D
+				auto view = m_Registry.view<Rigidbody2DComponent>();
+				for (auto e : view)
 				{
-					nsc.Instance = nsc.InstantiateScript();
-					nsc.Instance->m_Entity = Entity{ entity, this };
+					Entity entity = { e, this };
+					auto& transform = entity.GetComponent<TransformComponent>();
+					auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
 
-					nsc.Instance->OnCreate();
+					b2Body* body = (b2Body*)rb2d.RuntimeBody;
+					const auto& position = body->GetPosition();
+					transform.Translation.x = position.x;
+					transform.Translation.y = position.y;
+					transform.Rotation.z = body->GetAngle();
 				}
-
-				nsc.Instance->OnUpdate(ts);
-			});
-		}
-
-		// Physics
-		{
-			const int32_t velocityIterations = 6;
-			const int32_t positionIterations = 2;
-			m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
-
-			// Retrieve transform from Box2D
-			auto view = m_Registry.view<Rigidbody2DComponent>();
-			for (auto e : view)
-			{
-				Entity entity = { e, this };
-				auto& transform = entity.GetComponent<TransformComponent>();
-				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
-
-				b2Body* body = (b2Body*)rb2d.RuntimeBody;
-				const auto& position = body->GetPosition();
-				transform.Translation.x = position.x;
-				transform.Translation.y = position.y;
-				transform.Rotation.z = body->GetAngle();
 			}
 		}
 
@@ -248,27 +251,31 @@ namespace Ynion {
 
 	void Scene::OnUpdateSimulation(Timestep ts, EditorCamera& camera)
 	{
-		// Physics
+		if (!m_IsPaused || m_StepFrames-- > 0)
 		{
-			const int32_t velocityIterations = 6;
-			const int32_t positionIterations = 2;
-			m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
-
-			// Retrieve transform from Box2D
-			auto view = m_Registry.view<Rigidbody2DComponent>();
-			for (auto e : view)
+			// Physics
 			{
-				Entity entity = { e, this };
-				auto& transform = entity.GetComponent<TransformComponent>();
-				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+				const int32_t velocityIterations = 6;
+				const int32_t positionIterations = 2;
+				m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
 
-				b2Body* body = (b2Body*)rb2d.RuntimeBody;
-				const auto& position = body->GetPosition();
-				transform.Translation.x = position.x;
-				transform.Translation.y = position.y;
-				transform.Rotation.z = body->GetAngle();
+				// Retrieve transform from Box2D
+				auto view = m_Registry.view<Rigidbody2DComponent>();
+				for (auto e : view)
+				{
+					Entity entity = { e, this };
+					auto& transform = entity.GetComponent<TransformComponent>();
+					auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+
+					b2Body* body = (b2Body*)rb2d.RuntimeBody;
+					const auto& position = body->GetPosition();
+					transform.Translation.x = position.x;
+					transform.Translation.y = position.y;
+					transform.Rotation.z = body->GetAngle();
+				}
 			}
 		}
+
 		// Render
 		RenderScene(camera);
 	}
@@ -304,6 +311,11 @@ namespace Ynion {
 				return Entity{ entity, this };
 		}
 		return {};
+	}
+
+	void Scene::Step(int frames)
+	{
+		m_StepFrames = frames;
 	}
 
 	void Scene::DuplicateEntity(Entity entity)
