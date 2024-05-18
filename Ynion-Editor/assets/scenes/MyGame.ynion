@@ -44,9 +44,9 @@ Entities:
       RestitutionThreshold: 0.5
   - Entity: 18075666805247733634
     TagComponent:
-      Tag: BackGround
+      Tag: Background
     TransformComponent:
-      Translation: [23.2403755, -19.9070683, -4.40563583]
+      Translation: [24.831522, -31.5663605, -4.40563583]
       Rotation: [0, 0, 0]
       Scale: [240, 240, 1]
     SpriteRendererComponent:
@@ -57,9 +57,9 @@ Entities:
     TagComponent:
       Tag: Player
     TransformComponent:
-      Translation: [104.128441, -45.6618347, 0.0225147009]
+      Translation: [104.128441, -45.6618347, 0.00760555267]
       Rotation: [0, 0, 0]
-      Scale: [3.04728436, 2.53511143, 0.848135769]
+      Scale: [3.04728436, 2.53511143, 0.84813571]
     SpriteRendererComponent:
       Color: [1, 1, 1, 1]
       TexturePath: assets\textures\player_DOWN.png
@@ -1186,25 +1186,16 @@ Entities:
       RestitutionThreshold: 0.5
   - Entity: 15725774116467448647
     TagComponent:
-      Tag: wall
+      Tag: Text "Exit"
     TransformComponent:
-      Translation: [110.450806, -44.1738625, -1.90362346e-06]
-      Rotation: [0, 0, -1.57079637]
-      Scale: [5.99995422, 5.99995422, 1]
-    SpriteRendererComponent:
-      Color: [1, 1, 1, 1]
-      TexturePath: assets\textures\exit.png
-      TilingFactor: 1
-    Rigidbody2DComponent:
-      BodyType: Static
-      FixedRotation: false
-    BoxCollider2DComponent:
-      Offset: [0, 0]
-      Size: [0.5, 0.5]
-      Density: 1
-      Friction: 0.5
-      Restitution: 0
-      RestitutionThreshold: 0.5
+      Translation: [114.334084, -45.9334221, -1.90362312e-06]
+      Rotation: [0, 0, 0]
+      Scale: [5.99991274, 5.99991274, 1]
+    TextComponent:
+      TextString: Exit
+      Color: [1, 0.928571105, 0, 1]
+      Kerning: 0
+      LineSpacing: 0
   - Entity: 12621868118495182360
     TagComponent:
       Tag: wall
@@ -1268,3 +1259,24 @@ Entities:
       Friction: 0.5
       Restitution: 1
       RestitutionThreshold: 15
+  - Entity: 12073685635580006150
+    TagComponent:
+      Tag: Exit
+    TransformComponent:
+      Translation: [110.450806, -44.1738625, -1.90362346e-06]
+      Rotation: [0, 0, -1.57079637]
+      Scale: [5.99994659, 5.99994659, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+      TexturePath: assets\textures\exit.png
+      TilingFactor: 1
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5

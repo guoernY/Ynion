@@ -19,3 +19,6 @@
 [submodule "Ynion/vendor/Box2D"]
 	path = Ynion/vendor/Box2D
 	url = https://github.com/TheCherno/box2d.git
+[submodule "Ynion/vendor/msdf-atlas-gen"]
+	path = Ynion/vendor/msdf-atlas-gen
+	url = git@github.com:TheCherno/msdf-atlas-gen.git

@@ -196,6 +196,8 @@ namespace Ynion {
 					transform.Rotation.z = body->GetAngle();
 				}
 			}
+
+			m_GameMode->UpdateGame();
 		}
 
 		// Render 2D
@@ -242,10 +244,29 @@ namespace Ynion {
 				}
 			}
 
+			// Draw text
+			{
+				auto view = m_Registry.view<TransformComponent, TextComponent>();
+				for (auto entity : view)
+				{
+					auto [transform, text] = view.get<TransformComponent, TextComponent>(entity);
+
+					Renderer2D::DrawString(text.TextString, transform.GetTransform(), text, (int)entity);
+				}
+			}
+
+			if (m_GameMode->getGameState() == GameMode::GameState::Win)
+			{
+				glm::vec3 cameraPos = Scene::GetPrimaryCameraEntity().GetComponent<TransformComponent>().Translation;
+				glm::mat4 textTransform = glm::translate(glm::mat4(1.0f), glm::vec3(cameraPos.x - 30.0f, cameraPos.y - 5.0f, 1.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(20.0f, 20.0f, 1.0f));
+				Renderer2D::TextParams params;
+				params.Color = glm::vec4(0.7f, 0.7f, 1.0f, 1.0f);
+				Renderer2D::DrawString("You Win!", Font::GetDefault(), textTransform, params);
+			}
+
 			Renderer2D::EndScene();
 		}
 
-		m_GameMode->UpdateGame();
 		return m_GameMode->getGameState();
 	}
 
@@ -350,7 +371,7 @@ namespace Ynion {
 				auto& bc2d = entity.GetComponent<BoxCollider2DComponent>();
 
 				b2PolygonShape boxShape;
-				boxShape.SetAsBox(bc2d.Size.x * transform.Scale.x, bc2d.Size.y * transform.Scale.y);
+				boxShape.SetAsBox(bc2d.Size.x * transform.Scale.x, bc2d.Size.y * transform.Scale.y, b2Vec2(bc2d.Offset.x, bc2d.Offset.y), 0.0f);
 
 				b2FixtureDef fixtureDef;
 				fixtureDef.shape = &boxShape;
@@ -412,6 +433,16 @@ namespace Ynion {
 			}
 		}
 
+		// Draw text
+		{
+			auto view = m_Registry.view<TransformComponent, TextComponent>();
+			for (auto entity : view)
+			{
+				auto [transform, text] = view.get<TransformComponent, TextComponent>(entity);
+				Renderer2D::DrawString(text.TextString, transform.GetTransform(), text, (int)entity);
+			}
+		}
+
 		Renderer2D::EndScene();
 	}
 
@@ -470,6 +501,11 @@ namespace Ynion {
 
 	template<>
 	void Scene::OnComponentAdded<CircleCollider2DComponent>(Entity entity, CircleCollider2DComponent& component)
+	{
+	}
+
+	template<>
+	void Scene::OnComponentAdded<TextComponent>(Entity entity, TextComponent& component)
 	{
 	}
 
