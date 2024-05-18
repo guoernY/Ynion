@@ -17,8 +17,6 @@
 #include "box2d/b2_polygon_shape.h"
 #include "box2d/b2_circle_shape.h"
 
-extern Ynion::GameMode* Ynion::CreateGameMode(b2World* world);
-
 namespace Ynion {
 
 	static b2BodyType Rigidbody2DTypeToBox2DBody(Rigidbody2DComponent::BodyType bodyType)
@@ -41,7 +39,6 @@ namespace Ynion {
 	Scene::~Scene()
 	{
 		delete m_PhysicsWorld;
-		delete m_GameMode;
 	}
 
 	template<typename... Component>
@@ -132,16 +129,11 @@ namespace Ynion {
 	void Scene::OnRuntimeStart()
 	{
 		OnPhysics2DStart();
-		m_GameMode = CreateGameMode(m_PhysicsWorld);
-		m_GameMode->BeginGame();
 	}
 
 	void Scene::OnRuntimeStop()
 	{
 		OnPhysics2DStop();
-		m_GameMode->EndGame();
-		delete m_GameMode;
-		m_GameMode = nullptr;
 	}
 
 	void Scene::OnSimulationStart()
@@ -154,9 +146,9 @@ namespace Ynion {
 		OnPhysics2DStop();
 	}
 
-	GameMode::GameState Scene::OnUpdateRuntime(Timestep ts)
+	void Scene::OnUpdateRuntime(Timestep ts)
 	{
-		if (!m_IsPaused || m_StepFrames-- > 0)
+		if (!m_IsGamePaused && (!m_IsPaused || m_StepFrames-- > 0))
 		{
 			// Update scripts
 			{
@@ -196,8 +188,6 @@ namespace Ynion {
 					transform.Rotation.z = body->GetAngle();
 				}
 			}
-
-			m_GameMode->UpdateGame();
 		}
 
 		// Render 2D
@@ -255,19 +245,8 @@ namespace Ynion {
 				}
 			}
 
-			if (m_GameMode->getGameState() == GameMode::GameState::Win)
-			{
-				glm::vec3 cameraPos = Scene::GetPrimaryCameraEntity().GetComponent<TransformComponent>().Translation;
-				glm::mat4 textTransform = glm::translate(glm::mat4(1.0f), glm::vec3(cameraPos.x - 30.0f, cameraPos.y - 5.0f, 1.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(20.0f, 20.0f, 1.0f));
-				Renderer2D::TextParams params;
-				params.Color = glm::vec4(0.7f, 0.7f, 1.0f, 1.0f);
-				Renderer2D::DrawString("You Win!", Font::GetDefault(), textTransform, params);
-			}
-
 			Renderer2D::EndScene();
 		}
-
-		return m_GameMode->getGameState();
 	}
 
 	void Scene::OnUpdateSimulation(Timestep ts, EditorCamera& camera)

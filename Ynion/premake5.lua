@@ -43,7 +43,8 @@ project "Ynion"
 		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
-		"%{IncludeDir.ImGuizmo}"
+		"%{IncludeDir.ImGuizmo}",
+		"%{wks.location}/Ynion-Editor/Sandbox"
 	}
 
 	links

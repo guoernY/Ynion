@@ -8,6 +8,10 @@
 
 #include <yaml-cpp/yaml.h>
 
+// Temp
+#include "PlayerController.h"
+#include "Goal.h"
+
 namespace YAML {
 
 	template<>
@@ -281,6 +285,17 @@ namespace Ynion {
 			out << YAML::EndMap; // TextComponent
 		}
 
+		if (entity.HasComponent<NativeScriptComponent>())
+		{
+			out << YAML::Key << "NativeScriptComponent";
+			out << YAML::BeginMap; // NativeScriptComponent
+
+			auto& scriptComponent = entity.GetComponent<NativeScriptComponent>();
+			out << YAML::Key << "ScriptName" << YAML::Value << scriptComponent.name;
+
+			out << YAML::EndMap; // NativeScriptComponent
+		}
+
 		out << YAML::EndMap; // Entity
 	}
 
@@ -438,6 +453,15 @@ namespace Ynion {
 					tc.Color = textComponent["Color"].as<glm::vec4>();
 					tc.Kerning = textComponent["Kerning"].as<float>();
 					tc.LineSpacing = textComponent["LineSpacing"].as<float>();
+				}
+
+				auto scriptComponent = entity["NativeScriptComponent"];
+				if (scriptComponent)
+				{
+					if (!scriptComponent["ScriptName"].as<std::string>().compare("PlayerController"))
+						deserializedEntity.AddComponent<NativeScriptComponent>().Bind<PlayerController>("PlayerController");
+					else if (!scriptComponent["ScriptName"].as<std::string>().compare("Goal"))
+						deserializedEntity.AddComponent<NativeScriptComponent>().Bind<Goal>("Goal");
 				}
 			}
 		}

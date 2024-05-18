@@ -11,7 +11,6 @@
 
 // Temp
 #include "PlayerController.h"
-#include "CameraController.h"
 #include "Goal.h"
 
 /* The Microsoft C++ compiler is non-compliant with the C++ standard and needs
@@ -254,22 +253,26 @@ namespace Ynion {
 			DisplayAddComponentEntry<CircleCollider2DComponent>("Circle Collider 2D");
 			DisplayAddComponentEntry<TextComponent>("Text Component");
 
-			if (ImGui::MenuItem("PlayerController"))
+			if (!m_SelectionContext.HasComponent<NativeScriptComponent>())
 			{
-				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<PlayerController>();
-				ImGui::CloseCurrentPopup();
-			}
+				if (ImGui::Button("Script"))
+					ImGui::OpenPopup("Script");
 
-			if (ImGui::MenuItem("CameraController"))
-			{
-				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-				ImGui::CloseCurrentPopup();
-			}
+				if (ImGui::BeginPopup("Script"))
+				{
+					if (ImGui::MenuItem("PlayerController"))
+					{
+						m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<PlayerController>("PlayerController");
+						ImGui::CloseCurrentPopup();
+					}
 
-			if (ImGui::MenuItem("Goal"))
-			{
-				m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<Goal>();
-				ImGui::CloseCurrentPopup();
+					if (ImGui::MenuItem("Goal"))
+					{
+						m_SelectionContext.AddComponent<NativeScriptComponent>().Bind<Goal>("Goal");
+						ImGui::CloseCurrentPopup();
+					}
+					ImGui::EndPopup();
+				}
 			}
 
 			ImGui::EndPopup();
@@ -431,6 +434,7 @@ namespace Ynion {
 
 		DrawComponent<NativeScriptComponent>("Script", entity, [](auto& component)
 		{
+			ImGui::Text(component.name.c_str());
 		});
 
 	}

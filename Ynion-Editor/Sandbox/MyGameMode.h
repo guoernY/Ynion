@@ -1,5 +1,6 @@
 #pragma once
 #include "Ynion.h"
+#include "GameMode.h"
 
 #include "PlayerController.h"
 #include "Goal.h"
@@ -8,31 +9,29 @@
 #include "Box2D/include/box2d/b2_contact.h"
 #include "Box2D/include/box2d/b2_world_callbacks.h"
 
-uint64_t PlayerController::m_ID = 0;
-uint64_t Goal::m_ID = 0;
-
 class MyGameMode : public Ynion::GameMode
 {
 public:
-	MyGameMode();
-	MyGameMode(b2World* world);
+	MyGameMode(Ynion::EditorLayer* editor);
 	~MyGameMode();
 
 	virtual void BeginGame() override;
 	virtual void UpdateGame() override;
 	virtual void EndGame() override;
-private:
-	b2World* m_PhysicsWorld = nullptr;
-	b2ContactListener* m_ContactListener = nullptr;
-	uint64_t m_PlayerID;
-	uint64_t m_GoalID;
 
-	bool isSetID = false;
+	virtual void GameWin() override;
+	virtual void GameLoss() override;
+private:
+	uint64_t getScriptEntityID(const std::string name);
+	glm::vec3 getScriptEntityTranslation(const std::string name);
+private:
+	b2ContactListener* m_ContactListener = nullptr;
+	bool m_isGame = true;
 };
 
-Ynion::GameMode* Ynion::CreateGameMode(b2World* world)
+Ynion::GameMode* Ynion::CreateGameMode(Ynion::EditorLayer* editor)
 {
-	return new MyGameMode(world);
+	return new MyGameMode(editor);
 }
 
 class MyContactListener : public b2ContactListener

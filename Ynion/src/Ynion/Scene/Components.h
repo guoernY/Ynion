@@ -93,13 +93,15 @@ namespace Ynion {
 	struct NativeScriptComponent
 	{
 		ScriptableEntity* Instance = nullptr;
+		std::string name;
 
 		ScriptableEntity* (*InstantiateScript)();
 		void (*DestroyScript)(NativeScriptComponent*);
 
 		template<typename T>
-		void Bind()
+		void Bind(const std::string scriptName)
 		{
+			name = scriptName;
 			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
 			DestroyScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
 		}

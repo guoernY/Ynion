@@ -2,7 +2,6 @@
 
 #include "Ynion/Core/Timestep.h"
 #include "Ynion/Core/UUID.h"
-#include "Ynion/Scene/GameMode.h"
 #include "Ynion/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
@@ -31,7 +30,7 @@ namespace Ynion {
 		void OnSimulationStart();
 		void OnSimulationStop();
 
-		GameMode::GameState OnUpdateRuntime(Timestep ts);
+		void OnUpdateRuntime(Timestep ts);
 		void OnUpdateSimulation(Timestep ts, EditorCamera& camera);
 		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 		void OnViewportResize(uint32_t width, uint32_t height);
@@ -41,16 +40,22 @@ namespace Ynion {
 		Entity GetPrimaryCameraEntity();
 
 		bool IsPaused() const { return m_IsPaused; }
+		bool IsGamePaused() const { return m_IsGamePaused; }
 
 		void SetPaused(bool paused) { m_IsPaused = paused; }
+		void SetGamePaused(bool paused) { m_IsGamePaused = paused; }
 
 		void Step(int frames = 1);
+
+		b2World* getPhysicsWorld() { return m_PhysicsWorld; }
 
 		template<typename... Components>
 		auto GetAllEntitiesWith()
 		{
 			return m_Registry.view<Components...>();
 		}
+	public:	// Temp
+		entt::registry m_Registry;
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);
@@ -60,14 +65,12 @@ namespace Ynion {
 
 		void RenderScene(EditorCamera& camera);
 	private:
-		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		bool m_IsPaused = false;
+		bool m_IsGamePaused = false;
 		int m_StepFrames = 0;
 
 		b2World* m_PhysicsWorld = nullptr;
-
-		GameMode* m_GameMode = nullptr;
 
 		friend class Entity;
 		friend class SceneSerializer;

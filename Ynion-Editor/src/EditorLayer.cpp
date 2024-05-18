@@ -17,6 +17,8 @@ namespace Ynion {
 
 	extern const std::filesystem::path g_AssetPath;
 
+	extern GameMode* CreateGameMode(EditorLayer* editor);
+
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f, true), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 	{
@@ -80,34 +82,19 @@ namespace Ynion {
 					m_CameraController.OnUpdate(ts);
 
 				m_EditorCamera.OnUpdate(ts);
-
 				m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
-
 				break;
 			}
 			case SceneState::Simulate:
 			{
 				m_EditorCamera.OnUpdate(ts);
-
 				m_ActiveScene->OnUpdateSimulation(ts, m_EditorCamera);
 				break;
 			}
 			case SceneState::Play:
 			{
-				// TODO: move m_GameState away from EditorLayer
-				m_GameState = m_ActiveScene->OnUpdateRuntime(ts);
-				switch (m_GameState)
-				{
-				case GameMode::GameState::Run:
-					break;
-				case GameMode::GameState::Win:
-					OnScenePause();
-					break;
-				case GameMode::GameState::Loss:
-					OnSceneStop();
-					OnScenePlay();
-					break;
-				}
+				m_ActiveScene->OnUpdateRuntime(ts);
+				m_GameMode->UpdateGame();
 				break;
 			}
 		}
@@ -644,6 +631,10 @@ namespace Ynion {
 		m_ActiveScene->OnRuntimeStart();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+		m_GameMode = CreateGameMode(this);
+		m_GameMode->setPhysicsWorld(m_ActiveScene->getPhysicsWorld());
+		m_GameMode->BeginGame();
 	}
 
 	void EditorLayer::OnSceneSimulate()
@@ -664,9 +655,17 @@ namespace Ynion {
 		YN_CORE_ASSERT(m_SceneState == SceneState::Play || m_SceneState == SceneState::Simulate);
 
 		if (m_SceneState == SceneState::Play)
+		{
+			m_GameMode->EndGame();
+			delete m_GameMode;
+			m_GameMode = nullptr;
+
 			m_ActiveScene->OnRuntimeStop();
+		}
 		else if (m_SceneState == SceneState::Simulate)
+		{
 			m_ActiveScene->OnSimulationStop();
+		}
 
 		m_HoveredEntity = Entity();
 
@@ -685,6 +684,17 @@ namespace Ynion {
 		m_ActiveScene->SetPaused(true);
 	}
 
+	void EditorLayer::SetGamePause(bool pause)
+	{
+		m_ActiveScene->SetGamePaused(pause);
+	}
+
+	void EditorLayer::RestartGame()
+	{
+		OnSceneStop();
+		OnScenePlay();
+	}
+
 	void EditorLayer::OnDuplicateEntity()
 	{
 		if (m_SceneState != SceneState::Edit)
@@ -693,6 +703,30 @@ namespace Ynion {
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity)
 			m_EditorScene->DuplicateEntity(selectedEntity);
+	}
+
+	void EditorLayer::DrawString(const std::string& string, glm::vec3 offset, glm::vec2 scale, glm::vec4 color)
+	{
+		auto mainCameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+		Ynion::Camera* mainCamera = &mainCameraEntity.GetComponent<CameraComponent>().Camera;
+		glm::mat4 cameraTransform = mainCameraEntity.GetComponent<TransformComponent>().GetTransform();
+
+		Ynion::Renderer2D::BeginScene(*mainCamera, cameraTransform);
+		glm::vec3 cameraPos = m_ActiveScene->GetPrimaryCameraEntity().GetComponent<TransformComponent>().Translation;
+		glm::mat4 textTransform = glm::translate(glm::mat4(1.0f), glm::vec3(cameraPos.x - offset.x, cameraPos.y - offset.y, offset.z)) * glm::scale(glm::mat4(1.0f), glm::vec3(scale.x, scale.y, 1.0f));
+		Ynion::Renderer2D::TextParams params;
+		params.Color = color;
+		Ynion::Renderer2D::DrawString(string, Ynion::Font::GetDefault(), textTransform, params);
+		Ynion::Renderer2D::EndScene();
+	}
+
+	void EditorLayer::SetMainCamerePos(glm::vec3 transform)
+	{
+		auto mainCameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+		glm::vec3* trans = &mainCameraEntity.GetComponent<TransformComponent>().Translation;
+		trans->x = transform.x;
+		trans->y = transform.y;
+		trans->z = transform.z;
 	}
 
 }

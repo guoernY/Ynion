@@ -6,7 +6,11 @@
 
 #include "Ynion/Renderer/EditorCamera.h"
 
+#include "GameMode.h"
+
 namespace Ynion {
+	
+	class GameMode;
 
 	class EditorLayer : public Layer
 	{
@@ -20,6 +24,12 @@ namespace Ynion {
 		virtual void OnUpdate(Timestep ts) override;
 		virtual void OnImGuiRender() override;
 		virtual void OnEvent(Event& e) override;
+	public:	// Temp: using friend class makes them private 
+		void SetGamePause(bool pause);
+		void RestartGame();
+		void DrawString(const std::string& string, glm::vec3 offset, glm::vec2 scale, glm::vec4 color);
+		void SetMainCamerePos(glm::vec3 transform);
+		Ref<Scene> getActiveScene() { return m_ActiveScene; }
 	private:
 		bool OnKeyPressed(KeyPressedEvent& e);
 		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
@@ -86,8 +96,8 @@ namespace Ynion {
 		// Editor resources
 		Ref<Texture2D> m_IconPlay, m_IconPause, m_IconStep, m_IconSimulate, m_IconStop;
 
-		// GameState
-		GameMode::GameState m_GameState = GameMode::GameState::Run;
+		// GameMode
+		GameMode* m_GameMode = nullptr;
 	};
 
 }

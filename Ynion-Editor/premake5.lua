@@ -20,7 +20,9 @@ project "Ynion-Editor"
 		"%{wks.location}/Ynion/vendor/spdlog/include",
 		"%{wks.location}/Ynion/src",
 		"%{wks.location}/Ynion/vendor",
+		"%{wks.location}/Ynion-Editor/src",
 		"%{wks.location}/Ynion-Editor/Sandbox",
+		"%{IncludeDir.Box2D}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.ImGuizmo}"

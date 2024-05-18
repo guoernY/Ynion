@@ -23,7 +23,6 @@
 #include "Ynion/Scene/Entity.h"
 #include "Ynion/Scene/ScriptableEntity.h"
 #include "Ynion/Scene/Components.h"
-#include "Ynion/Scene/GameMode.h"
 #include "Ynion/Renderer/OrthographicCameraController.h"
 
 // ----Renderer-----------------
